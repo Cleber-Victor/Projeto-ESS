@@ -1,6 +1,8 @@
 
 import styles from './index.module.css'
 import Input from '../../components/form/input';
+import SubmitButton from '../../components/form/submitButton';
+import DeleteButton from '../../components/form/deleteButton'
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../../Provider';
 import APIService from '../../../../shared/components/APIService';
@@ -20,7 +22,7 @@ const client_profile = () => {
 
   useEffect(() => {
     setUserContext({
-      id: "1",
+      id: "2",
       name: "Joao",
       email: "user1@gmail.com",
       cpf: "123.865.154-87",
@@ -35,12 +37,9 @@ const client_profile = () => {
           console.log(response);
           setIsModalOpen2(true)
           setEditedData({});
-
-
            setUserContext({ ...user, ...editedData });
         })
         .catch((error) => {
-
           setIsEditing(true);
           console.log(error.response.data.message);
           return;
@@ -70,6 +69,7 @@ const client_profile = () => {
 
   };
 
+;
 
     return (
       <>
@@ -115,7 +115,7 @@ const client_profile = () => {
                 type="text"
                 text="Nome"
                 name="nome"
-                id='nome'
+                id = "nome"
                 placeholder={user?.name || "Nome do restaurante"}
                 disabled={!isEditing}
                 onChange={handleFieldEdition} />
